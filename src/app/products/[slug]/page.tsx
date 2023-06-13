@@ -23,19 +23,19 @@ const getSingleProduct = async (slug: string) => {
 
   return products
 }
-// export async function generateStaticParams() {
-//   const products = await client.fetch(
-//     `*[_type == "product"  ]{
+export async function generateStaticParams() {
+  const products = await client.fetch(
+    `*[_type == "product"  ]{
 
-//     slug
+    slug
 
-// }`
-//   )
+}`
+  )
 
-//   return products.map((product: any) => ({
-//     slug: product.slug.current,
-//   }))
-// }
+  return products.map((product: any) => ({
+    slug: product.slug.current,
+  }))
+}
 
 const ProductDetailPage = async ({ params }: { params: { slug: string } }) => {
   const slug = params.slug
