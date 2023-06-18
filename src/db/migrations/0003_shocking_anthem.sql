@@ -1,0 +1,1 @@
+ALTER TABLE "Cart" ADD COLUMN "product_type" text NOT NULL;

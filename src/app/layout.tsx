@@ -1,7 +1,8 @@
 import Navbar from '@/components/Navbar'
 import './globals.css'
 import { Sora } from 'next/font/google'
-import { ClerkProvider } from '@clerk/nextjs'
+import { ClerkProvider, auth } from '@clerk/nextjs'
+import ToasterComponent from '@/lib/Toaster'
 const sora = Sora({ subsets: ['latin'] })
 
 export const metadata = {
@@ -14,12 +15,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { userId } = auth()
   return (
     <ClerkProvider>
       <html lang='en'>
         <body className='font-sora'>
-          <Navbar />
+          <Navbar userId={userId || ''} />
           {children}
+          <ToasterComponent />
         </body>
       </html>
     </ClerkProvider>

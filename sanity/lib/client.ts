@@ -27,6 +27,7 @@ export const getFeaturedProducts = async () => {
       _id,
       name,
     image,
+    slug,
     price
     }
 }`)

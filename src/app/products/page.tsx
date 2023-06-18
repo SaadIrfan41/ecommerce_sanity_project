@@ -13,7 +13,7 @@ const AllProductsPage = async () => {
         <Link
           href={`/products/${product.slug.current}`}
           key={product._id}
-          className='text-[#212121]  text-lg font-semibold    '
+          className='text-[#212121]  text-lg font-semibold  mx-auto'
         >
           <Image
             src={urlForImage(product?.image[0])?.url()}

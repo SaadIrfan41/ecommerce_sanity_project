@@ -1,0 +1,34 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1686756771028,
+      "tag": "0000_yummy_devos",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1686934035254,
+      "tag": "0001_unknown_network",
+      "breakpoints": false
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1686947941763,
+      "tag": "0002_hard_kat_farrell",
+      "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1686948373224,
+      "tag": "0003_shocking_anthem",
+      "breakpoints": false
+    }
+  ]
+}

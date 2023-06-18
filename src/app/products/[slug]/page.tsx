@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { ShoppingCart } from 'lucide-react'
 import Counter from '@/components/Counter'
 import { SignInButton, SignedOut } from '@clerk/nextjs'
+import { urlForImage } from '../../../../sanity/lib/image'
 const getSingleProduct = async (slug: string) => {
   console.log(slug)
   const products =
@@ -23,6 +24,7 @@ const getSingleProduct = async (slug: string) => {
 
   return products
 }
+
 export async function generateStaticParams() {
   const products = await client.fetch(
     `*[_type == "product"  ]{
@@ -80,42 +82,14 @@ const ProductDetailPage = async ({ params }: { params: { slug: string } }) => {
               </li>
             </ul>
           </div>
-          <Counter />
-          <div className='flex gap-4 items-center'>
-            <div className='flex flex-col gap-2'>
-              <Button
-                disabled={!userId}
-                asChild
-                className=' rounded-none  py-5 px-8 font-semibold text-base bg-[#212121]'
-              >
-                <button>
-                  <ShoppingCart className=' ' />
-                  Add to Cart
-                </button>
-              </Button>
-              {!userId && (
-                <SignInButton mode='modal'>
-                  <button className='btn'>Add to Cart</button>
-                </SignInButton>
-              )}
-            </div>
-            {/* 
-            {userId ? (
-              <button>
-                {' '}
-                <ShoppingCart className=' ' />
-                Add to Cart
-              </button>
-            ) : (
-              <SignInButton mode='modal'>
-                <button className='btn'>Add to Cart</button>
-              </SignInButton>
-            )} */}
-
-            <p className=' font-bold text-2xl tracking-[0.1em] h-full '>
-              ${product[0].price}
-            </p>
-          </div>
+          {/* <Counter
+            productId={product[0]._id}
+            productPrice={product[0].price}
+            productImage={urlForImage(product[0].image[0])?.url()}
+            name={product[0].name}
+            product_type={product[0].product_type}
+          /> */}
+          <Counter product={product[0]} productId={product[0]._id} />
         </div>
       </div>
       <div className=' bg-white flex flex-col mt-16 pt-8 px-16 pb-24 gap-8'>
