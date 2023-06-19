@@ -22,37 +22,8 @@ const Counter = ({
   } = useAuth()
   const [counter, setcounter] = useState(1)
   const { addToCart, updatingCart } = useCartStore()
-  // const productImage = urlForImage(product.image[0])?.url()
+
   product.product_id = productId
-  // const addToCart = async () => {
-  //   setloading(true)
-  //   try {
-  //     const res = await fetch('/api/cart', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         productId,
-  //         quantity: counter,
-  //         image: productImage,
-  //         product_type,
-  //         price: productPrice,
-  //         name,
-  //       }),
-  //     })
-
-  //     const { message } = await res.json()
-  //     toast.success(message)
-  //     setloading(false)
-
-  //     return
-  //   } catch (err) {
-  //     if (err instanceof Error) {
-  //       console.log(err.message)
-  //       toast.error(err.message)
-  //     } else {
-  //       console.log('Unexpected error', err)
-  //     }
-  //   }
-  // }
 
   return (
     <>
@@ -100,7 +71,7 @@ const Counter = ({
               )}
             </div> */}
         <Button
-          disabled={!userId || updatingCart}
+          disabled={updatingCart}
           asChild
           className=' rounded-none  py-5 px-8 font-semibold text-base bg-[#212121]'
         >

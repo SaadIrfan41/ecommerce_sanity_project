@@ -82,13 +82,7 @@ const ProductDetailPage = async ({ params }: { params: { slug: string } }) => {
               </li>
             </ul>
           </div>
-          {/* <Counter
-            productId={product[0]._id}
-            productPrice={product[0].price}
-            productImage={urlForImage(product[0].image[0])?.url()}
-            name={product[0].name}
-            product_type={product[0].product_type}
-          /> */}
+
           <Counter product={product[0]} productId={product[0]._id} />
         </div>
       </div>

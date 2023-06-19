@@ -4,14 +4,19 @@ import { runFireworks } from '../../../lib/confettie'
 import { Store } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { useAuth } from '@clerk/nextjs'
+import { useCartStore } from '@/store/useCartStore'
 const SuccessCheckoutPage = () => {
+  const { userId } = useAuth()
+  const { clearCart } = useCartStore()
   useEffect(() => {
+    clearCart(userId as string)
     //    localStorage.clear()
     //    setCartItems([])
     //    setTotalPrice(0)
     //    setTotalQuantities(0)
     runFireworks()
-  }, [])
+  }, [clearCart, userId])
   return (
     <div className='  flex flex-col gap-10 items-center h-[80vh] justify-center text-5xl'>
       <p className=' flex justify-center'>
