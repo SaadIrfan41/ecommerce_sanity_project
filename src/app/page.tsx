@@ -197,7 +197,7 @@ const HomePage = () => {
                 asChild
                 className=' rounded-none  w-fit py-5 font-semibold text-base bg-[#212121]'
               >
-                <Link href='/'>See All Products</Link>
+                <Link href='/products'>See All Products</Link>
               </Button>
             </div>
           </div>

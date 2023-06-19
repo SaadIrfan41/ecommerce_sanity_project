@@ -3,6 +3,7 @@ import './globals.css'
 import { Sora } from 'next/font/google'
 import { ClerkProvider, auth } from '@clerk/nextjs'
 import ToasterComponent from '@/lib/Toaster'
+import Footer from '@/components/Footer'
 const sora = Sora({ subsets: ['latin'] })
 
 export const metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <body className='font-sora'>
           <Navbar userId={userId || ''} />
           {children}
+          <Footer />
           <ToasterComponent />
         </body>
       </html>

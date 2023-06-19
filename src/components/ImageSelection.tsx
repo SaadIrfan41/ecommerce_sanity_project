@@ -19,11 +19,11 @@ const ImageSelection = ({ product }: any) => {
           className='w-[100px] h-[100px] cursor-pointer'
         />
       ))}
-      <div className='relative'>
+      <div className='relative w-full'>
         <img
           src={urlForImage(product.image[selectImage])?.url()}
           alt={'Product Images'}
-          className='w-full h-full  xl:w-[878px] xl:h-[940px]'
+          className='w-full h-full  lg:w-[878px] '
         />
       </div>
     </div>

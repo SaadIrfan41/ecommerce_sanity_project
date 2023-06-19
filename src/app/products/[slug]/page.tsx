@@ -46,11 +46,11 @@ const ProductDetailPage = async ({ params }: { params: { slug: string } }) => {
   console.log(userId)
   //   console.log(product)
   return (
-    <div className='bg-[#fcfcfc] py-16 px-32'>
-      <div className='flex gap-24'>
+    <div className='bg-[#fcfcfc] py-16 px-8 lg:pl-32 '>
+      <div className='flex flex-col lg:flex-row gap-24'>
         <ImageSelection product={product[0]} />
 
-        <div className=' flex flex-col mt-16 flex-1 text-[#212121] gap-8 '>
+        <div className=' flex flex-col mt-16 flex-1 text-[#212121] gap-8 basis-[60%] xl:basis-[30%] '>
           <div>
             <h3 className=' text-2xl tracking-[0.1em] font-normal'>
               {product[0].name}
@@ -86,9 +86,9 @@ const ProductDetailPage = async ({ params }: { params: { slug: string } }) => {
           <Counter product={product[0]} productId={product[0]._id} />
         </div>
       </div>
-      <div className=' bg-white flex flex-col mt-16 pt-8 px-16 pb-24 gap-8'>
+      <div className=' bg-white flex flex-col mt-16 p-8 gap-8'>
         <div className='relative border-b-2 border-[#c4c4c4]'>
-          <div className=' font-extrabold text-[7.5rem] text-[#f2f3f7] opacity-70 z-[-1]'>
+          <div className=' font-extrabold lg:text-[7.5rem] text-[4.5rem] text-[#f2f3f7] opacity-70 z-[-1]'>
             Overview
           </div>
           <h2 className=' text-[1.4rem]  absolute font-bold top-[45%]'>
