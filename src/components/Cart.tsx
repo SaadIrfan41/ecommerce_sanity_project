@@ -41,7 +41,7 @@ const Cart = ({ userId }: { userId: string }) => {
     error,
     fetchData,
     cart,
-    removeFromCart,
+    deleteSingleProductFromCart,
     updatingCart,
   } = useCartStore()
 
@@ -99,7 +99,9 @@ const Cart = ({ userId }: { userId: string }) => {
                     <span className=' font-light text-xl'>{product.name}</span>
                     <button
                       disabled={updatingCart}
-                      onClick={() => removeFromCart(product, userId)}
+                      onClick={() =>
+                        deleteSingleProductFromCart(product, userId)
+                      }
                       className=' w-7 h-7 shrink-0 hover:cursor-pointer  disabled:cursor-not-allowed'
                     >
                       <Trash2 />

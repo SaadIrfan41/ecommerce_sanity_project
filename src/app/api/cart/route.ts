@@ -146,34 +146,33 @@ export async function PUT(request: Request) {
   }
 }
 
-// export async function DELETE(request: Request) {
-//   console.log('Delete Request Entered')
-//   const { userId } = auth()
-//   console.log(userId)
-//   if (!userId) {
-//     return NextResponse.json({ message: 'User ID Not Valid' })
-//   }
-//   const { id } = await request.json()
-//   console.log('DELETE REQUEST', id, userId)
-//   try {
-//     await db
-//       .delete(CartTable)
-//       .where(and(eq(CartTable.user_id, userId), eq(CartTable.id, id)))
-//       .returning()
-
-//     //  const cart_total = {
-//     //    cart,
-//     //    totalQuantity,
-//     //    totalPrice,
-//     //  }
-
-//     return NextResponse.json({ message: 'Item Deleted' })
-//     // return NextResponse.json({ cartItems: cart })
-//   } catch (err) {
-//     if (err instanceof Error) {
-//       return NextResponse.json({ message: err.message })
-//     } else {
-//       console.log('Unexpected error', err)
-//     }
-//   }
-// }
+export async function DELETE(request: NextRequest) {
+  console.log('Delete Request Entered')
+  const { userId } = auth()
+  console.log(userId)
+  if (!userId) {
+    return NextResponse.json({ message: 'User ID Not Valid' })
+  }
+  const url = request.nextUrl
+  if (url.searchParams.has('id')) {
+    const id = url.searchParams.get('id')
+    if (id) {
+      try {
+        await db
+          .delete(CartTable)
+          .where(and(eq(CartTable.user_id, userId), eq(CartTable.id, id)))
+          .returning()
+        return NextResponse.json({ message: 'Item Deleted' })
+      } catch (err) {
+        if (err instanceof Error) {
+          return NextResponse.json({ message: err.message })
+        } else {
+          console.log('Unexpected error', err)
+        }
+      }
+    }
+  } else {
+    return new NextResponse('Cart ID Missing')
+  }
+  // console.log('DELETE REQUEST', id, userId)
+}

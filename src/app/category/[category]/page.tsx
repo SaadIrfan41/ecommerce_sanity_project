@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 import React from 'react'
-import { client } from '../../../sanity/lib/client'
+import { client } from '../../../../sanity/lib/client'
 
 import Image from 'next/image'
-import { urlForImage } from '../../../sanity/lib/image'
+import { urlForImage } from '../../../../sanity/lib/image'
 import Link from 'next/link'
 
 const getProducts = async ({

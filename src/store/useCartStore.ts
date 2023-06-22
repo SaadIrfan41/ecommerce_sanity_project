@@ -38,7 +38,7 @@ interface Actions {
     action: 'increment' | 'decrement'
   ) => Promise<void>
   fetchData: (userId: string) => Promise<void>
-  removeFromCart: (Item: Product, userId: string) => Promise<void>
+  deleteSingleProductFromCart: (Item: Product, userId: string) => Promise<void>
   clearCart: (userId: string) => Promise<void>
 }
 
@@ -230,16 +230,13 @@ export const useCartStore = create<State & Actions>((set, get) => ({
       toast.error('Item Does Not Exisit')
     }
   },
-  removeFromCart: async (product: Product, userId: string) => {
+  deleteSingleProductFromCart: async (product: Product, userId: string) => {
     try {
       set({ updatingCart: true, error: null })
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/cart/${userId}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/cart?id=${product.id}`,
         {
-          method: 'PUT',
-          body: JSON.stringify({
-            id: product.id,
-          }),
+          method: 'DELETE',
         }
       )
       const data = await res.json()

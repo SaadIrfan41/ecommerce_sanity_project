@@ -41,38 +41,38 @@ export async function GET(
   }
 }
 
-export async function PUT(
-  request: NextRequest,
-  { params: { userId } }: { params: { userId: string } }
-) {
-  console.log('DELETE API ROUTE ENTERED')
-  if (!userId) {
-    return NextResponse.json({ message: 'User ID Not Valid' })
-  }
-  const { id } = await request.json()
+// export async function PUT(
+//   request: NextRequest,
+//   { params: { userId } }: { params: { userId: string } }
+// ) {
+//   console.log('DELETE API ROUTE ENTERED')
+//   if (!userId) {
+//     return NextResponse.json({ message: 'User ID Not Valid' })
+//   }
+//   const { id } = await request.json()
 
-  try {
-    await db
-      .delete(CartTable)
-      .where(and(eq(CartTable.user_id, userId), eq(CartTable.id, id)))
-      .returning()
+//   try {
+//     await db
+//       .delete(CartTable)
+//       .where(and(eq(CartTable.user_id, userId), eq(CartTable.id, id)))
+//       .returning()
 
-    //  const cart_total = {
-    //    cart,
-    //    totalQuantity,
-    //    totalPrice,
-    //  }
+//     //  const cart_total = {
+//     //    cart,
+//     //    totalQuantity,
+//     //    totalPrice,
+//     //  }
 
-    return NextResponse.json({ message: 'Item Deleted' })
-    // return NextResponse.json({ cartItems: cart })
-  } catch (err) {
-    if (err instanceof Error) {
-      return NextResponse.json({ message: err.message })
-    } else {
-      console.log('Unexpected error', err)
-    }
-  }
-}
+//     return NextResponse.json({ message: 'Item Deleted' })
+//     // return NextResponse.json({ cartItems: cart })
+//   } catch (err) {
+//     if (err instanceof Error) {
+//       return NextResponse.json({ message: err.message })
+//     } else {
+//       console.log('Unexpected error', err)
+//     }
+//   }
+// }
 
 export async function DELETE(
   request: NextRequest,

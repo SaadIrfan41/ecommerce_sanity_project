@@ -30,17 +30,17 @@ const Navbar = ({ userId }: { userId: string }) => {
         <NavigationMenu>
           <NavigationMenuList className=' flex gap-12 font-medium '>
             <NavigationMenuItem>
-              <Link href='/female' legacyBehavior passHref>
+              <Link href='/category/female' legacyBehavior passHref>
                 <NavigationMenuLink>Female</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href='/male' legacyBehavior passHref>
+              <Link href='/category/male' legacyBehavior passHref>
                 <NavigationMenuLink>Male</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <Link href='/kids' legacyBehavior passHref>
+              <Link href='/category/kids' legacyBehavior passHref>
                 <NavigationMenuLink>Kids</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
@@ -178,7 +178,7 @@ const Navbar = ({ userId }: { userId: string }) => {
                 dialogRef.current?.close()
               }}
               className=' py-2   px-2 '
-              href='/female'
+              href='/category/female'
             >
               Female
             </Link>
@@ -187,7 +187,7 @@ const Navbar = ({ userId }: { userId: string }) => {
                 dialogRef.current?.close()
               }}
               className=' py-2  px-2 '
-              href='/male'
+              href='/category/male'
             >
               Male
             </Link>
@@ -196,7 +196,7 @@ const Navbar = ({ userId }: { userId: string }) => {
                 dialogRef.current?.close()
               }}
               className=' py-2   px-2 '
-              href='/kids'
+              href='/category/kids'
             >
               Kids
             </Link>
