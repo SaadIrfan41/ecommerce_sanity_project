@@ -6,7 +6,6 @@ import { headers } from 'next/headers'
 import { db } from '@/db/db'
 import { CartTable, CreateOrder, Order, OrderTable } from '@/db/schema'
 import { eq } from 'drizzle-orm'
-import { Product } from '@/store/useProductStore'
 
 export const dynamic = 'auto'
 
