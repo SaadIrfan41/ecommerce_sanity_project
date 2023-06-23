@@ -78,7 +78,7 @@ const Counter = ({
           {userId ? (
             updatingCart ? (
               <button>
-                Please wait
+                Adding to cart
                 <Loader2 className='mr-2 h-4 w-4 animate-spin' />
               </button>
             ) : (

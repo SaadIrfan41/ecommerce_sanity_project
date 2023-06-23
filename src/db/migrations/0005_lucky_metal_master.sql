@@ -1,0 +1,10 @@
+DROP INDEX IF EXISTS "unique_idx";
+ALTER TABLE "Orders" ADD COLUMN "products" json NOT NULL;
+ALTER TABLE "Orders" ADD COLUMN "total_quantity" numeric NOT NULL;
+ALTER TABLE "Orders" ADD COLUMN "total_price" numeric NOT NULL;
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "product_id";
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "quantity";
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "image";
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "product_name";
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "product_price";
+ALTER TABLE "Orders" DROP COLUMN IF EXISTS "product_type";

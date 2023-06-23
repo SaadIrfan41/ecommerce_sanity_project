@@ -10,7 +10,7 @@ const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY as string, {
 export async function POST(request: NextRequest) {
   // console.log(await request.json())
   const body = await request.json()
-  //   console.log(body)
+  console.log(body)
   const { userId } = auth()
   try {
     if (!userId)
@@ -40,13 +40,25 @@ export async function POST(request: NextRequest) {
         quantity: item.quantity,
       }
     })
+    // const stringifiedProducts = body.map((item: Product) =>
+    //   JSON.stringify(item).toString()
+    // )
+    // const joinedString = stringifiedProducts.join(',')
+    const customer = await stripe.customers.create({
+      metadata: {
+        userId: userId,
+        // cart: joinedString,
+      },
+    })
     // console.log(items)
 
     const StripeSession = await stripe.checkout.sessions.create({
       line_items: items,
+      customer: customer.id,
       submit_type: 'pay',
       mode: 'payment',
       payment_method_types: ['card'],
+
       billing_address_collection: 'auto',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cart`,

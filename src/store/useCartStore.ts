@@ -39,7 +39,7 @@ interface Actions {
   ) => Promise<void>
   fetchData: (userId: string) => Promise<void>
   deleteSingleProductFromCart: (Item: Product, userId: string) => Promise<void>
-  clearCart: (userId: string) => Promise<void>
+  clearCart: () => void
 }
 
 const INITIAL_STATE: State = {
@@ -259,32 +259,13 @@ export const useCartStore = create<State & Actions>((set, get) => ({
       set({ error, updatingCart: false })
     }
   },
-  clearCart: async (userId: string) => {
-    console.log(userId)
-    try {
-      set({ updatingCart: true, error: null })
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/cart/${userId}`,
-        {
-          method: 'DELETE',
-        }
-      )
-      const data = await res.json()
-      if (!res.ok) {
-        return set({ updatingCart: false, error: data?.message })
-      }
-
-      toast.success(data.message)
-      set((state) => ({
-        cart: [],
-        totalItems: 0,
-        totalPrice: 0,
-        updatingCart: false,
-        error: null,
-      }))
-    } catch (error) {
-      console.log(error)
-      set({ error, updatingCart: false })
-    }
+  clearCart: async () => {
+    set((state) => ({
+      cart: [],
+      totalItems: 0,
+      totalPrice: 0,
+      updatingCart: false,
+      error: null,
+    }))
   },
 }))

@@ -29,6 +29,20 @@
       "when": 1686948373224,
       "tag": "0003_shocking_anthem",
       "breakpoints": false
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1687535694713,
+      "tag": "0004_steady_moon_knight",
+      "breakpoints": false
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1687539762731,
+      "tag": "0005_lucky_metal_master",
+      "breakpoints": false
     }
   ]
 }

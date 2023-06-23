@@ -1,4 +1,4 @@
-import { InferModel } from 'drizzle-orm'
+import { InferModel, sql } from 'drizzle-orm'
 import {
   pgTable,
   text,
@@ -8,6 +8,7 @@ import {
   integer,
   varchar,
   decimal,
+  json,
 } from 'drizzle-orm/pg-core'
 
 export const CartTable = pgTable(
@@ -30,6 +31,17 @@ export const CartTable = pgTable(
     }
   }
 )
+export const OrderTable = pgTable('Orders', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  user_id: varchar('user_id', { length: 256 }).notNull(),
+  products: json('products').notNull(),
+  created_at: timestamp('created_at').defaultNow().notNull(),
+  updated_at: timestamp('updated_at').defaultNow().notNull(),
+  total_quantity: decimal('total_quantity').notNull(),
+  total_price: decimal('total_price').notNull(),
+})
 
 export type Cart = InferModel<typeof CartTable>
 export type AddCartItem = InferModel<typeof CartTable, 'insert'>
+export type Order = InferModel<typeof OrderTable>
+export type CreateOrder = InferModel<typeof OrderTable, 'insert'>
